@@ -7,9 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Fleet</title>
+  <title>Middleware Admin</title>
   <!-- Bootstrap core CSS-->
   <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <!-- Custom fonts for this template-->
   <link href="{{url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
   <!-- Page level plugin CSS-->
@@ -24,7 +25,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Fleet Admin</a>
+    <a class="navbar-brand" href="index.html">Middleware Admin</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,20 +33,14 @@
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right">
           <a class="nav-link dashboard-hyperlink" onclick="loadDashboardUpdates()" view="dashboard-view" href="#">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
+            <i class="fa fa-fw fa-file-text-o"></i>
+            <span class="nav-link-text">Files</span>
           </a>
         </li>
-         <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right">
+         <li class="nav-item" data-toggle="tooltip" data-placement="right">
           <a class="nav-link templates-hyperlink" onclick="loadTemplates()" view="templates-view" href="#">
             <i class="fa fa-fw fa-pencil"></i>
-            <span class="nav-link-text">Performance</span>
-          </a>
-        </li> -->
-        <li class="nav-item" data-toggle="tooltip" data-placement="right">
-          <a class="nav-link status-hyperlink" onclick="loadStatus()" view="status-view" href="#">
-            <i class="fa fa-fw fa-plus"></i>
-            <span class="nav-link-text">New Work Order</span>
+            <span class="nav-link-text">Misc</span>
           </a>
         </li>
       </ul>
@@ -70,32 +65,41 @@
       <section class="dashboard-view">
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Dashboard</li>
-          <li class="breadcrumb-item active">Trip History</li>
+          <li class="breadcrumb-item">Files</li>
+          <li class="breadcrumb-item active">File Downloader</li>
         </ol>
+        <div class="row">
+          <div class="col-sm-12">
+          <form id="searchForm">
+            <div class="form-group">
+              <label for="domain">Select Domain</label>
+                <select class="form-control" id="domain">
+                </select>             
+            </div>
+            <div class="form-group">
+              <label for="datepicker">Select Date</label>
+              <input type="text" id="datepicker">             
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <br>
+          <div id="fileList">
+          </div>  
+          </div>
+        </div>
         <!-- Icon Cards-->
         <div id="loadDashboard" class="loading"><img src="css/ajax-loader.gif" width="64" height="64"/></div>
-        <div class="row">
-        </div>
+       
       </section>
       <!-- ***************** templates section ******************* -->
       <section style="display:none" class="templates-view">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Templates</li>
-          <li class="breadcrumb-item active">Templates</li>
+          <li class="breadcrumb-item">Misc</li>
+          <li class="breadcrumb-item active">Misc</li>
         </ol>
         <div id="loadTemplates" class="loading"><img src="css/ajax-loader.gif" width="64" height="64"/></div>
         <div class="row" id="templates-content">
-      </section>
-      <!-- ***************** status section ******************* -->
-      <section style="display:none" class="status-view">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">Work order</li>
-          <li class="breadcrumb-item active">New Work Order</li>
-        </ol>
-        <div id="loadStatus" class="loading"><img src="css/ajax-loader.gif" width="64" height="64"/></div>
-        <div class="row">
-        </div>
+        </div> 
       </section>
     </div>
     <!-- /.model-wrapper-->
@@ -103,7 +107,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © Verizon Telematics 2018</small>
+          <small>Copyright © HCL technologies 2018</small>
         </div>
       </div>
     </footer>
@@ -131,6 +135,7 @@
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
